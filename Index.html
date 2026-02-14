@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Valentine Surprise 💖</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Comic Sans MS', cursive;
+    text-align:center;
+    background:linear-gradient(135deg,#ffdde6,#e6f7ff,#ffe6fa);
+    overflow:hidden;
+}
+
+.page{
+    display:none;
+    padding-top:90px;
+}
+
+.active{
+    display:block;
+}
+
+.card{
+    background:white;
+    width:360px;
+    margin:auto;
+    padding:40px;
+    border-radius:35px;
+    box-shadow:0 15px 40px rgba(255,105,180,0.4);
+}
+
+button{
+    padding:14px 28px;
+    border:none;
+    border-radius:30px;
+    margin:12px;
+    font-size:18px;
+    background:#ff80bf;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.15);
+}
+
+#noBtn{
+    position:absolute;
+}
+
+.sparkle{
+    position:fixed;
+    font-size:24px;
+    animation:float 4s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(100vh) scale(1);}
+    100%{transform:translateY(-10vh) scale(1.5);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div id="page1" class="page active">
+    <div class="card">
+        <h1 style="color:#ff4da6;">Happy Valentine's Day 💖</h1>
+        <button onclick="goToPage2()">Next 🎀</button>
+    </div>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="page">
+    <div class="card">
+        <h2 style="color:#ff3399;">Do you love me? 💕</h2>
+<img src="https://i.postimg.cc/y8cLm0hb/Screenshot-20260214-125810.jpg" style="width:220px; border-radius:25px; margin:20px 0; box-shadow:0 10px 25px rgba(255,105,180,0.4);">
+        <button onclick="goToPage3()">Yes 💖</button>
+        <button id="noBtn" onclick="jumpNo()">No 😳</button>
+    </div>
+</div>
+
+<!-- PAGE 3 -->
+<div id="page3" class="page">
+    <div class="card">
+        <h1 style="color:#ff1493; font-size:32px;">I LOVE YOU 💕✨</h1>
+<img src="https://i.postimg.cc/vHdg19BH/Screenshot-20260214-124458.jpg" style="width:220px; border-radius:25px; margin:20px 0; box-shadow:0 10px 25px rgba(255,105,180,0.4);">
+        <p>You are my favorite person in the universe 🌸</p>
+    </div>
+</div>
+
+<script>
+
+function goToPage2(){
+    switchPage("page1","page2");
+}
+
+function goToPage3(){
+    switchPage("page2","page3");
+    playSound();
+    startExplosion();
+}
+
+function switchPage(from,to){
+    document.getElementById(from).classList.remove("active");
+    document.getElementById(to).classList.add("active");
+}
+
+/* ปุ่ม No กระโดด 5 ครั้ง */
+let noCount = 0;
+
+function jumpNo(){
+    let btn = document.getElementById("noBtn");
+
+    if(noCount < 5){
+        btn.style.left = Math.random()*300 + "px";
+        btn.style.top = Math.random()*400 + "px";
+        noCount++;
+    } else {
+        btn.style.display="none";
+    }
+
+</script>
+
+</body>
+</html>
